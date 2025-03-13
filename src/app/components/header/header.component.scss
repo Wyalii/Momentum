@@ -1,0 +1,37 @@
+.header
+{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.button-section
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+button
+{
+    cursor: pointer;
+}
+.create-colleague-btn
+{
+    border: 1px solid #8338EC;
+    background:none;
+    height: 39px;
+    border-radius: 5px;
+}
+.create-task-btn
+{
+    background:#8338EC ;
+    border: none;
+    color: white;
+    height: 39px;
+    border-radius: 5px;
+}
+.MomentumLogo
+{
+    cursor: pointer;
+}
