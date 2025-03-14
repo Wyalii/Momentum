@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { MomentumApiService } from '../../services/momentum-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TaskComponent } from '../../components/task/task.component';
+
 @Component({
   selector: 'app-landing',
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, TaskComponent],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
   animations: [
@@ -29,11 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
 export class LandingComponent implements OnInit {
   constructor(public momentumApiService: MomentumApiService) {}
   ngOnInit(): void {
+    this.GetAllTasks();
     this.GetAllEmployees();
     this.GetAllDepartments();
     this.GetAllPriorities();
   }
-
+  readyToStartTasks: any = [];
+  inProgressTasks: any = [];
+  readyToTests: any = [];
+  finishedTasks: any = [];
   employess: any = [];
   departmentList: any[] = [];
   prioritiesList: any[] = [];
@@ -89,6 +95,20 @@ export class LandingComponent implements OnInit {
 
   isDepartmentSelected(department: any): boolean {
     return this.selectedDepartments.includes(department.id);
+  }
+
+  GetAllTasks() {
+    this.momentumApiService.getAllTasks().subscribe(
+      (data: any[]) => {
+        this.readyToStartTasks = data.filter((task) => task.status.id === 1);
+        this.inProgressTasks = data.filter((task) => task.status.id === 2);
+        this.readyToTests = data.filter((task) => task.status.id === 3);
+        this.finishedTasks = data.filter((task) => task.status.id === 4);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   GetAllEmployees() {

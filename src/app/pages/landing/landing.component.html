@@ -48,22 +48,23 @@
     </section>
 
     <section class="task-dashboard">
-        <div class="needsToStart">
+        <div class="needsToStartList">
             <header>
                 <h1>დასაწყები</h1>
             </header>
+            <app-task [tasks]="readyToStartTasks"></app-task>
         </div>
-        <div class="inProgress">
+        <div class="inProgressList">
             <header>
                 <h1>პროგრესში</h1>
             </header>
         </div>
-        <div class="readyToTest">
+        <div class="readyToTestList">
             <header>
                 <h1>მზად ტესტირებისთვის</h1>
             </header>
         </div>
-        <div class="finished">
+        <div class="finishedList">
             <header>
                 <h1>დასრულებული</h1>
             </header>

@@ -1,0 +1,35 @@
+<section class="task" *ngFor="let task of tasks">
+    <header *ngIf="task.priority" class="task-header">
+        <section class="box1">
+            <div *ngIf="task.priority.id === 1" class="priority-low">
+                <img [src]="task.priority.icon">
+                <p>{{task.priority.name}}</p>
+            </div>
+
+            <div class="department-container">
+              <p *ngIf="task.department.id === 1" class="administration-dep">ადმინისტრაცია</p>
+              <p *ngIf="task.department.id === 2" class="hr-dep">HR</p>
+              <p *ngIf="task.department.id === 3" class="finances-dep">ფინანსები</p>
+              <p *ngIf="task.department.id === 4" class="sales-dep">გაყიდვები</p>
+              <p *ngIf="task.department.id === 5" class="logistics-dep">ლოჯისტიკა</p>
+              <p *ngIf="task.department.id === 6" class="IT-dep">ინფ.ტექ</p>
+              <p *ngIf="task.department.id === 7" class="media-dep">მედია</p>
+            </div>
+        </section>
+
+        <p>{{ task.due_date | date: 'yyyy-MM-dd' }}</p>
+    </header>
+
+    <section class="box2">
+        <p class="task-name">{{task.name}}</p>
+        <p class="task-description">{{task.description}}</p>
+    </section>
+
+    <footer class="task-footer">
+      <img [src]="task.employee.avatar" class="pfp" alt="pfp">
+      <div class="box3">
+        <img src="/Comments.svg">
+        <p>0</p>
+      </div>
+    </footer>
+</section>
