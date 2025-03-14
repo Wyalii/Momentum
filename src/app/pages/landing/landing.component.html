@@ -1,1 +1,73 @@
-<p>landing works!</p>
+<section class="landing-page">
+    <h1 class="title">დავალებების გვერდი</h1>
+    <section class="filter-menu">
+        <button class="departments-btn" (click)="selectFilterMenu('departments')">
+            <p>დეპარტამენტი</p>
+            <img src="/ArrowDownPurple.svg">
+        </button>
+        <button class="priorities-btn" (click)="selectFilterMenu('priorities')">
+            <p>პრიორიტეტი</p>
+            <img src="/ArrowDownBlack.svg">
+        </button>
+        <button class="colleagues-btn" (click)="selectFilterMenu('colleagues')">
+            <p>თანამშრომელი</p>
+            <img src="/ArrowDownBlack.svg">
+        </button>
+    </section>
+
+    <section *ngIf="departments" class="departments" @fadeInDrop>
+        <div *ngFor="let department of departmentList" class="department" (click)="toggleDepartmentSelection(department)">
+            <img [src]="isDepartmentSelected(department) ? '/Checked.svg' : '/NotChecked.svg'" class="checkBtn">
+            <p>{{department.name}}</p>
+        </div>
+        <div class="filter-btn-container">
+            <button class="filter-btn">არჩევა</button>
+        </div>
+    </section>
+
+    <section *ngIf="priorities" class="priorities" @fadeInDrop>
+        <div class="priority" *ngFor="let priority of prioritiesList" (click)="togglePrioritySelection(priority)">
+           <img [src]="isPrioritySelected(priority) ? '/Checked.svg' : '/NotChecked.svg'">
+           <p>{{priority.name}}</p>
+        </div>
+        <div class="filter-btn-container">
+            <button class="filter-btn">არჩევა</button>
+        </div>
+    </section>
+
+    <section *ngIf="colleagues" class="colleagues" @fadeInDrop>
+      <div *ngFor="let colleague of employess" class="colleague" (click)="toggleColleagueSelection(colleague)">
+        <img class="checkBtn" [src]="isColleagueSelected(colleague) ? '/Checked.svg' : '/NotChecked.svg'">
+        <img [src]="colleague.avatar" class="colleague-avatar">
+        <p>{{colleague.name}}</p>        
+        <p>{{colleague.surname}}</p>
+      </div>
+      <div class="filter-btn-container">
+        <button class="filter-btn">არჩევა</button>
+    </div>
+    </section>
+
+    <section class="task-dashboard">
+        <div class="needsToStart">
+            <header>
+                <h1>დასაწყები</h1>
+            </header>
+        </div>
+        <div class="inProgress">
+            <header>
+                <h1>პროგრესში</h1>
+            </header>
+        </div>
+        <div class="readyToTest">
+            <header>
+                <h1>მზად ტესტირებისთვის</h1>
+            </header>
+        </div>
+        <div class="finished">
+            <header>
+                <h1>დასრულებული</h1>
+            </header>
+        </div>
+    </section>
+
+</section>

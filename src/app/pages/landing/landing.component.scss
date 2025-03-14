@@ -1,0 +1,164 @@
+.landing-page
+{
+    width: 90%;
+    position: relative;
+}
+.title
+{
+    font-weight: 600;
+    font-size: 34px;
+}
+.filter-menu
+{
+    width: 688px;
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid #DEE2E6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.priorities-btn,.colleagues-btn,.departments-btn
+{
+    width: 199px;
+    height: 100%;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    gap: 8px;
+    
+}
+.priorities-btn p,.colleagues-btn p,.departments-btn p
+{
+    font-size: 16px;
+    font-weight: 400;
+}
+.departments-btn
+{
+    color: #8338EC;
+}
+
+.departments,.priorities,.colleagues
+{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 688px;
+    height: 274px;
+    border: 0.5px solid #8338EC;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 999;
+    background: white;
+    margin-top: 10px;
+    overflow-y: scroll;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    
+}
+
+.department,.priority
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-left: 10px;
+}
+.colleagues{
+    padding-left: 10px;
+}
+
+.colleague
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.colleague-avatar
+{
+    width: 40x;
+    height: 40px;
+    border-radius: 50%;
+}
+.checkBtn
+{
+    cursor: pointer;
+}
+.filter-btn-container
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.filter-btn
+{
+    background-color: #8338EC;
+    height: 35px;
+    width: 155px;
+    border: none;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.task-dashboard
+{
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(4, 381px); 
+    gap: 20px; 
+    justify-content: space-between;
+    
+}
+.needsToStart,.inProgress,.readyToTest,.finished
+{
+    width: 381px;
+    
+    h1{
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+    }
+}
+.needsToStart header{
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F7BC30;
+}
+
+.inProgress header{
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FB5607;
+}
+
+.readyToTest header{
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF006E;
+}
+
+.finished header{
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3A86FF;
+}
