@@ -52,22 +52,25 @@
             <header>
                 <h1>დასაწყები</h1>
             </header>
-            <app-task [tasks]="readyToStartTasks"></app-task>
+            <app-task [tasks]="readyToStartTasks" color="yellow"></app-task>
         </div>
         <div class="inProgressList">
             <header>
                 <h1>პროგრესში</h1>
             </header>
+            <app-task [tasks]="inProgressTasks" color="orange"></app-task>
         </div>
         <div class="readyToTestList">
             <header>
                 <h1>მზად ტესტირებისთვის</h1>
             </header>
+            <app-task [tasks]="readyToTests" color="pink"></app-task>
         </div>
         <div class="finishedList">
             <header>
                 <h1>დასრულებული</h1>
             </header>
+            <app-task [tasks]="finishedTasks" color="blue"></app-task>
         </div>
     </section>
 

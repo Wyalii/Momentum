@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #F7BC30;
+    
     border-radius: 15px;
     gap: 20px;
     
@@ -13,6 +13,23 @@
         font-size: 20px;
         font-weight: 500;
     }
+}
+
+.yellow-border
+{
+    border: 1px solid #F7BC30;
+}
+.orange-border
+{
+    border: 1px solid #FB5607;
+}
+.pink-border
+{
+    border: 1px solid #FF006E;
+}
+.blue-border
+{
+    border: 1px solid #3A86FF;
 }
 .task-header{
     height: 54px;
@@ -109,11 +126,27 @@
 }
 .priority-medium
 {
-
+    display: flex;
+    height: 26px;
+    width: 86px;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 4px;
+    gap: 4px;
+    align-items: center;
+    border: 1px solid #FFBE0B;
 }
 .priority-high
 {
-
+    display: flex;
+    height: 26px;
+    width: 86px;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 4px;
+    gap: 4px;
+    align-items: center;
+    border: 1px solid #FA4D4D;
 }
 
 .department-container

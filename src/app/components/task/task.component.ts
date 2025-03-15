@@ -8,4 +8,5 @@ import { CommonModule } from '@angular/common';
 })
 export class TaskComponent {
   @Input() tasks: any = [];
+  @Input() color: string = '';
 }

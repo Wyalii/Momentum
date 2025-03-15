@@ -1,7 +1,16 @@
-<section class="task" *ngFor="let task of tasks">
+<section [ngClass]="{
+    'yellow-border': color === 'yellow',
+    'pink-border': color === 'pink',
+    'orange-border': color === 'orange',
+    'blue-border':color === 'blue'
+}"  class="task" *ngFor="let task of tasks">
     <header *ngIf="task.priority" class="task-header">
         <section class="box1">
-            <div *ngIf="task.priority.id === 1" class="priority-low">
+            <div [ngClass]="{
+              'priority-low':task.priority.id === 1,
+              'priority-medium':task.priority.id === 2,
+              'priority-high':task.priority.id === 3,
+            }">
                 <img [src]="task.priority.icon">
                 <p>{{task.priority.name}}</p>
             </div>
@@ -26,7 +35,9 @@
     </section>
 
     <footer class="task-footer">
-      <img [src]="task.employee.avatar" class="pfp" alt="pfp">
+      <div class="box3">
+        <img [src]="task.employee.avatar" class="pfp" alt="pfp">
+      </div>
       <div class="box3">
         <img src="/Comments.svg">
         <p>0</p>
