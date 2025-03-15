@@ -21,7 +21,7 @@
             <p>{{department.name}}</p>
         </div>
         <div class="filter-btn-container">
-            <button class="filter-btn">არჩევა</button>
+            <button class="filter-btn" (click)="getFilteredTasks(selectedColleagues,selectedDepartments,selectedPriorities)">არჩევა</button>
         </div>
     </section>
 
@@ -31,7 +31,7 @@
            <p>{{priority.name}}</p>
         </div>
         <div class="filter-btn-container">
-            <button class="filter-btn">არჩევა</button>
+            <button class="filter-btn" (click)="getFilteredTasks(selectedColleagues,selectedDepartments,selectedPriorities)">არჩევა</button>
         </div>
     </section>
 
@@ -43,7 +43,7 @@
         <p>{{colleague.surname}}</p>
       </div>
       <div class="filter-btn-container">
-        <button class="filter-btn">არჩევა</button>
+        <button class="filter-btn" (click)="getFilteredTasks(selectedColleagues,selectedDepartments,selectedPriorities)">არჩევა</button>
     </div>
     </section>
 

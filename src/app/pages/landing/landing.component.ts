@@ -40,6 +40,7 @@ export class LandingComponent implements OnInit {
   inProgressTasks: any = [];
   readyToTests: any = [];
   finishedTasks: any = [];
+
   employess: any = [];
   departmentList: any[] = [];
   prioritiesList: any[] = [];
@@ -51,6 +52,79 @@ export class LandingComponent implements OnInit {
   departments: boolean = false;
   colleagues: boolean = false;
   priorities: boolean = false;
+
+  getFilteredTasks(
+    selectedColleagues: any[],
+    selectedDepartments: any[],
+    selectedPriorities: any[]
+  ) {
+    this.momentumApiService.getAllTasks().subscribe((data: any[]) => {
+      this.readyToStartTasks = data.filter(
+        (task) =>
+          task.status.id === 1 &&
+          this.applyFilters(
+            task,
+            selectedColleagues,
+            selectedDepartments,
+            selectedPriorities
+          )
+      );
+
+      this.inProgressTasks = data.filter(
+        (task) =>
+          task.status.id === 2 &&
+          this.applyFilters(
+            task,
+            selectedColleagues,
+            selectedDepartments,
+            selectedPriorities
+          )
+      );
+
+      this.readyToTests = data.filter(
+        (task) =>
+          task.status.id === 3 &&
+          this.applyFilters(
+            task,
+            selectedColleagues,
+            selectedDepartments,
+            selectedPriorities
+          )
+      );
+
+      this.finishedTasks = data.filter(
+        (task) =>
+          task.status.id === 4 &&
+          this.applyFilters(
+            task,
+            selectedColleagues,
+            selectedDepartments,
+            selectedPriorities
+          )
+      );
+    });
+  }
+
+  applyFilters(
+    task: any,
+    selectedColleagues: any[],
+    selectedDepartments: any[],
+    selectedPriorities: any[]
+  ) {
+    const matchesColleague =
+      selectedColleagues.length === 0 ||
+      selectedColleagues.includes(task.employee.id);
+
+    const matchesDepartment =
+      selectedDepartments.length === 0 ||
+      selectedDepartments.includes(task.department.id);
+
+    const matchesPriority =
+      selectedPriorities.length === 0 ||
+      selectedPriorities.includes(task.priority.id);
+
+    return matchesColleague && matchesDepartment && matchesPriority;
+  }
 
   toggleColleagueSelection(colleague: any) {
     const colleagueId = colleague.id;
