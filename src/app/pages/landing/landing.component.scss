@@ -110,10 +110,17 @@
 }
 .task-dashboard
 {
+    width: 100%;
     margin-top: 100px;
-    display: grid;
-    grid-template-columns: repeat(4, 381px); 
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px; 
+    justify-content: space-between;
+    @media (max-width:868px) {
+      align-items: center;
+      justify-content: center;
+    }
+   
     
 }
 .needsToStartList,.inProgressList,.readyToTestList,.finishedList
@@ -185,5 +192,8 @@ app-task
   align-items: start;
   
 }
-
+.blur
+{
+    filter:blur(5px);
+}
 

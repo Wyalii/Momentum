@@ -1,7 +1,11 @@
-<header class="header">
+<header class="header" [ngClass]="employeeComponentService.CreateEmployeeComponent() === true ? 'blur' : ''">
     <img src="/MomentumLogo.svg" alt="MomentumLogo" class="MomentumLogo">
     <section class="button-section">
-        <button class="create-colleague-btn">თანამშრომლის შექმნა</button>
+        <button class="create-colleague-btn" 
+        (click)="employeeComponentService.CreateEmployeeComponent.set(!employeeComponentService.CreateEmployeeComponent())">
+        თანამშრომლის შექმნა
+        </button>
+
         <button class="create-task-btn">+ შექმენი ახალი დავალება</button>
     </section>
 </header>

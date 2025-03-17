@@ -1,4 +1,5 @@
-<section class="landing-page">
+<app-create-employee *ngIf="createEmployeeService.CreateEmployeeComponent() === true"></app-create-employee>
+<section [ngClass]="createEmployeeService.CreateEmployeeComponent() === true ? 'blur' : ''" class="landing-page">
     <h1 class="title">დავალებების გვერდი</h1>
     <section class="filter-menu">
         <button class="departments-btn" (click)="selectFilterMenu('departments')">

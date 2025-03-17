@@ -4,10 +4,17 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { MomentumApiService } from '../../services/momentum-api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskComponent } from '../../components/task/task.component';
+import { CreateEmployeeComponent } from '../../components/create-employee/create-employee.component';
+import { CreateEmployeeService } from '../../services/create-employee.service';
 
 @Component({
   selector: 'app-landing',
-  imports: [CommonModule, HttpClientModule, TaskComponent],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    TaskComponent,
+    CreateEmployeeComponent,
+  ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
   animations: [
@@ -29,13 +36,14 @@ import { TaskComponent } from '../../components/task/task.component';
   ],
 })
 export class LandingComponent implements OnInit {
-  constructor(public momentumApiService: MomentumApiService) {}
+  constructor(
+    public momentumApiService: MomentumApiService,
+    public createEmployeeService: CreateEmployeeService
+  ) {}
   ngOnInit(): void {
-    this.GetAllTasks();
-    this.GetAllEmployees();
-    this.GetAllDepartments();
-    this.GetAllPriorities();
+    this.loadData();
   }
+
   readyToStartTasks: any = [];
   inProgressTasks: any = [];
   readyToTests: any = [];
@@ -171,7 +179,7 @@ export class LandingComponent implements OnInit {
     return this.selectedDepartments.includes(department.id);
   }
 
-  GetAllTasks() {
+  loadData() {
     this.momentumApiService.getAllTasks().subscribe(
       (data: any[]) => {
         this.readyToStartTasks = data.filter((task) => task.status.id === 1);
@@ -183,9 +191,7 @@ export class LandingComponent implements OnInit {
         console.log(error);
       }
     );
-  }
 
-  GetAllEmployees() {
     this.momentumApiService.getAllEmployees().subscribe(
       (data: any) => {
         this.employess = data;
@@ -195,10 +201,6 @@ export class LandingComponent implements OnInit {
       }
     );
 
-    console.log(this.employess);
-  }
-
-  GetAllPriorities() {
     this.momentumApiService.getAllPriorities().subscribe(
       (data: any) => {
         this.prioritiesList = data;
@@ -208,10 +210,6 @@ export class LandingComponent implements OnInit {
       }
     );
 
-    console.log(this.prioritiesList);
-  }
-
-  GetAllDepartments() {
     this.momentumApiService.getAllDepartments().subscribe(
       (data: any) => {
         this.departmentList = data;
@@ -220,8 +218,6 @@ export class LandingComponent implements OnInit {
         console.log(error);
       }
     );
-
-    console.log(this.departmentList);
   }
 
   selectFilterMenu(filter: string) {
