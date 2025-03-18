@@ -1,15 +1,15 @@
-<header class="closeBtn-Container"><img src="/Cancel.svg" class="close-btn"></header>
+<header class="closeBtn-Container"><img src="/Cancel.svg" class="close-btn" (click)="createEmployeeService.CreateEmployeeComponent.set(false)"></header>
 <h1>თანამშრომლის დამატება</h1>
 <section class="form">
   <section class="input-container">
     <div class="input-box1">
         <h3>სახელი</h3>
-        <input>
+        <input [(ngModel)]="firstname">
         <p>მინიმუმ 2 სიმბოლო</p>
     </div>
     <div class="input-box2">
         <h3>გვარი</h3>
-        <input>
+        <input [(ngModel)]="lastname">
         <p>მინიმუმ 2 სიმბოლო</p>
     </div>
   </section>
@@ -22,13 +22,20 @@
   </section>
   <input type="file" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden>
 
-  <section class="department-container">
+  <section  class="department-container" (click)="department = !department">
     <h3>დეპარტამენტი</h3>
-    <input class="department-selector-input">
-    <img src="/ArrowDownBlack.svg" class="arrowDown">
+    <input *ngIf="!department" class="department-selector-input" [(ngModel)]="selectedDepartmentName">
+    <img [ngClass]="department ? 'arrowDownDepartment' : ''" src="/ArrowDownBlack.svg" class="arrowDown">
+    <section *ngIf="department" class="department-list">
+      <p *ngFor="let department of departmentList" (click)="selectDepartment(department)">
+        {{ department.name }}
+      </p>
+    </section>
   </section>
+
+  
 </section>
 <footer>
     <button class="cancel-btn">გაუქმება</button>
-    <button class="add-employee-btn">დაამატე თანამშრომელი</button>
+    <button class="add-employee-btn" (click)="createEmployee(firstname,lastname,avatarFile,selectedDepartment)">დაამატე თანამშრომელი</button>
 </footer>

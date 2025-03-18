@@ -19,6 +19,35 @@ export class MomentumApiService {
 
   private GetTasksUrl = 'https://momentum.redberryinternship.ge/api/tasks';
 
+  private CreateEmplyoeeUrl =
+    'https://momentum.redberryinternship.ge/api/employees';
+
+  createEmployee(
+    firstname: string,
+    lastname: string,
+    avatar: File | null,
+    departmentId: number
+  ) {
+    const formData = new FormData();
+    formData.append('name', firstname);
+    formData.append('surname', lastname);
+    formData.append('department_id', departmentId.toString());
+    formData.append('avatar', avatar!, avatar!.name);
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    this.http.post(this.CreateEmplyoeeUrl, formData, { headers }).subscribe(
+      (data) => {
+        console.log('Employee created:', data);
+      },
+      (error) => {
+        console.error('Error creating employee:', error);
+      }
+    );
+  }
+
   getTaskComments(id: number) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
