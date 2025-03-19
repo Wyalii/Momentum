@@ -1,0 +1,43 @@
+<h1>შექმენი ახალი დავალება</h1>
+<section class="form">
+  <section class="container">
+    <div class="box">
+        <h5>სათაური</h5>
+        <input class="input">
+    </div>
+    <div class="box" (click)="department = !department">
+        <h5>დეპარტამენტი</h5>
+        <input *ngIf="!department" class="input" [(ngModel)]="selectedDepartmentName">
+        <img [ngClass]="department ? 'arrowDownDepartment' : ''" src="/ArrowDownBlack.svg" class="arrowDown">
+        <section *ngIf="department" class="department-list">
+          <p *ngFor="let department of departmentList" (click)="selectDepartment(department)">
+            {{ department.name }}
+          </p>
+        </section>
+    </div>
+  </section> 
+    
+  <section class="container">
+    <div class="box">
+        <h5>აღწერა</h5>
+        <input class="input">
+    </div>
+
+    <div class="box" (click)="employee = !employee">
+        <h5>პასუხისმგებელი თანამშრომელი</h5>
+        <div *ngIf="!employee" class="input-box">
+            <img *ngIf="!employee" [src]="selectedEmployeeAvatar" class="avatar" >
+            <p class="">{{selectedEmployeeName}}</p>
+        </div>
+        <img [ngClass]="employee? 'arrowDownDepartment' : ''" src="/ArrowDownBlack.svg" class="arrowDown">
+        <section *ngIf="employee" class="department-list">
+          <div *ngFor="let employee of employeList" (click)="selectEmploye(employee)">
+            <img [src]="employee.avatar" class="avatar">
+            <p>{{ employee.name }}</p>
+          </div>
+        </section>
+    </div>
+  </section>
+  <section class="container"></section>
+  <section class="container"></section>
+</section>
