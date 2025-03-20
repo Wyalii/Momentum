@@ -3,6 +3,7 @@ import { MomentumApiService } from '../../services/momentum-api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { CreateEmployeeService } from '../../services/create-employee.service';
+
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
@@ -41,6 +42,8 @@ export class CreateEmployeeComponent implements OnInit {
       avatar,
       departmentId
     );
+
+    this.createEmployeeService.CreateEmployeeComponent.set(false);
   }
 
   selectDepartment(departmentInput: any) {
