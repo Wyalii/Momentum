@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { enviroment } from '../../environments/environments.prod';
+import { environment } from '../../environments/environment.prod';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class MomentumApiService {
   constructor(private http: HttpClient) {}
-  private token = enviroment.secretToken;
+  private token = environment.secretToken;
   private GetEmployeesUrl =
     'https://momentum.redberryinternship.ge/api/employees';
   private GetPrioritiesUrl =
