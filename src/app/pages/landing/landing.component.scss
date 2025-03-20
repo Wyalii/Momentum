@@ -1,7 +1,12 @@
 .landing-page
 {
     width: 90%;
+    height: 100%;
     position: relative;
+    font-family: Firago;
+}
+h1{
+    font-family: Firago;
 }
 .title
 {
@@ -17,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: Firago;
 
 }
 .priorities-btn,.colleagues-btn,.departments-btn
@@ -30,6 +36,7 @@
     border: none;
     cursor: pointer;
     gap: 8px;
+    font-family: Firago;
     
 }
 .priorities-btn p,.colleagues-btn p,.departments-btn p
@@ -58,7 +65,7 @@
     overflow-y: scroll;
     padding-right: 5px;
     padding-bottom: 5px;
-    
+    font-family: Firago;
 }
 
 .department,.priority

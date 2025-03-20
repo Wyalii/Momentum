@@ -1,9 +1,19 @@
+@font-face {
+    font-family: 'Firago';
+    src: url('/fonts/webfonts/firago-latin-400-normal.woff2') format('woff2'),
+         url('/fonts/webfonts/firago-latin-400-normal.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
 html,body{
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Firago;
 }
 app-root
 {
@@ -13,6 +23,7 @@ app-root
     justify-content: center;
     width: 100%;
     height: 100%;
+    font-family: Firago;
 }
 app-header
 {
@@ -21,15 +32,18 @@ app-header
     height: 100px;
     align-items: center;
     justify-content: center;
+    font-family: Firago;
 }
 
 app-landing
 {
     width: 100%;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 100px;
+    font-family: Firago;
 }
 
 app-create-employee
@@ -48,6 +62,7 @@ app-create-employee
     align-items: center;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
     gap: 30px;
+    font-family: Firago;
 }
 
 app-create-task
@@ -55,9 +70,10 @@ app-create-task
     
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: center;
     justify-content: center;
     width: 90%;
     height: 90%;
+    font-family: Firago;
 }
     

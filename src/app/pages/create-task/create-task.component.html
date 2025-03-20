@@ -1,16 +1,17 @@
+<app-create-employee *ngIf="createEmployeeService.CreateEmployeeComponent() === true"></app-create-employee>
 <h1>შექმენი ახალი დავალება</h1>
-<section class="form">
+<section class="form" [ngClass]="createEmployeeService.CreateEmployeeComponent() === true ? 'blur' : ''">
   <section class="container">
     <div class="box">
         <h5>სათაური</h5>
-        <input class="input">
+        <input class="input" [(ngModel)]="title">
     </div>
     <div class="box" (click)="department = !department">
         <h5>დეპარტამენტი</h5>
         <input *ngIf="!department" class="input" [(ngModel)]="selectedDepartmentName">
-        <img [ngClass]="department ? 'arrowDownDepartment' : ''" src="/ArrowDownBlack.svg" class="arrowDown">
-        <section *ngIf="department" class="department-list">
-          <p *ngFor="let department of departmentList" (click)="selectDepartment(department)">
+        <img *ngIf="!department" src="/ArrowDownBlack.svg" class="arrowDown">
+        <section *ngIf="department" class="list">
+          <p *ngFor="let department of departmentList" (click)="selectDepartment(department)" class="department">
             {{ department.name }}
           </p>
         </section>
@@ -20,24 +21,62 @@
   <section class="container">
     <div class="box">
         <h5>აღწერა</h5>
-        <input class="input">
+        <textarea class="input" class="about" [(ngModel)]="description"></textarea>
     </div>
 
     <div class="box" (click)="employee = !employee">
         <h5>პასუხისმგებელი თანამშრომელი</h5>
         <div *ngIf="!employee" class="input-box">
-            <img *ngIf="!employee" [src]="selectedEmployeeAvatar" class="avatar" >
+            <img *ngIf="selectedEmployeeAvatar" [src]="selectedEmployeeAvatar" class="avatar" >
             <p class="">{{selectedEmployeeName}}</p>
         </div>
-        <img [ngClass]="employee? 'arrowDownDepartment' : ''" src="/ArrowDownBlack.svg" class="arrowDown">
-        <section *ngIf="employee" class="department-list">
-          <div *ngFor="let employee of employeList" (click)="selectEmploye(employee)">
+        <img *ngIf="!employee" src="/ArrowDownBlack.svg" class="arrowDown2">
+        <section *ngIf="employee" class="list">
+          <div *ngFor="let employee of employeList" (click)="selectEmploye(employee)" class="employee">
             <img [src]="employee.avatar" class="avatar">
             <p>{{ employee.name }}</p>
           </div>
         </section>
     </div>
   </section>
-  <section class="container"></section>
-  <section class="container"></section>
+  <section class="container">
+    <div class="box2">
+        <div class="minibox">
+          <h5>პრიორიტეტი</h5>
+          <div *ngIf="!priortiy" (click)="priortiy = !priortiy" class="priority-box">
+             <img [src]="selectedPriortiyImg">
+             <p>{{selectedPriorityName}}</p>
+          </div>
+         <section *ngIf="priortiy" class="list" >
+            <div *ngFor="let priortiy of prioritiesList" class="priority" (click)="selectPriority(priortiy)">
+                <img [src]="priortiy.icon">
+                <p>{{priortiy.name}}</p>
+            </div>
+         </section>
+        </div>
+         <div class="minibox">
+            <h5>სტატუსი</h5>
+           <div *ngIf="!status" class="status-box" (click)="status = !status">
+             <div *ngIf="!status" >
+               <p>{{selectedStatusName}}</p>
+             </div>
+           </div>
+            <section *ngIf="status" class="list" >
+              <div *ngFor="let status of statusList" class="status" (click)="selectStatus(status)">
+                 <p>{{status.name}}</p>
+              </div>
+            </section>
+         </div>
+         
+           
+    </div>
+    <div class="box">
+        <h5>დედლაინი</h5>
+       <input type="date" class="date" [(ngModel)]="date">
+    </div>
+    
+  </section>
+  <section class="footer">
+    <button (click)="createTask(title,description,date,selectedStatus,selectedEmploye,selectedPriortiy)">დავალების შექმნა</button>
+  </section>
 </section>
